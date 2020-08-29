@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import html2canvas from 'html2canvas';
 
 export default function Header() {
   const pdf = function() {
