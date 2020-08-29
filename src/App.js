@@ -7,8 +7,12 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 
 function App() {
-  const [ data, setData ] = useState(initialData);
+  const [ data, setData ] = useState(window.localStorage.getItem('kanban-data') || initialData);
   
+  useEffect(()=> {
+    
+  }, [data]);
+
   const onDragEnd = (result) => {
     const { destination, source, draggableId, type } = result; 
 
