@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import html2canvas from 'html2canvas';
 
 export default function Header() {
-  const pdf = function() {
+  const savePdf = function() {
     htm2canvas(document.querySelector('#capture')).then(canvas=> {
       document.body.appendChild(canvas);
     })
@@ -12,9 +12,7 @@ export default function Header() {
 
   return (
     <Navbar bg="light" fixed="top">
-      <Button onClick = {
-        
-      }>
+      <Button onClick = {savePdf}>
         Print PDF
       </Button>
       <Navbar.Brand>Brand text</Navbar.Brand>
