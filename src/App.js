@@ -4,8 +4,9 @@ import './styles/index.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id='capture'>
       <Header />
+      <h1>Test</h1>
     </div>
   );
 }
