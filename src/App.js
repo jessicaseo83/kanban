@@ -3,6 +3,7 @@ import Header from './components/Navbar';
 import './styles/index.css';
 import initialData from './data/Initialdata';
 import Column from './components/Column';
+import AddColumn from './components/AddColumn';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 
@@ -111,6 +112,23 @@ function App() {
     setData(newData);
   }
 
+  const newColumn = (title) => {
+    const newId = (Math.random() * 9999).toString();
+    const newData = {
+      ...data,
+      columns: {
+        ...data.columns,
+        [newId]: {
+          id: newId,
+          title: title,
+          taskIds: [],
+        }
+      },
+      columnOrder: [...data.columnOrder, newId]
+    }
+    setData(newData);
+  }
+
   return (
     <div className="App" id='pdf'>
       <Header />
@@ -128,6 +146,7 @@ function App() {
                 return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask}/>
               })}
               {provided.placeholder}
+              <AddColumn onAdd={newColumn}/>
             </div>
           )}
         </Droppable>
