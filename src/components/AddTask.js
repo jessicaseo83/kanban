@@ -11,14 +11,16 @@ export default function AddTask(props) {
 
   function addEvent(event) {
     event.preventDefault();
-    props.onAdd(title, detail)
+    props.onAdd(title, detail);
+    setTitle('');
+    setDetail('');
   }
 
   return (
     <Accordion defaultActiveKey="1">
     <Card>
     <Accordion.Toggle as={Card.Header} eventKey="0">+</Accordion.Toggle>
-    <Accordion.Collapse eventKey="0">
+    <Accordion.Collapse eventKey="0" >
       <Form>
         <Form.Group controlId="title">
           <Form.Label>Title</Form.Label>
@@ -28,7 +30,9 @@ export default function AddTask(props) {
           <Form.Label>Description</Form.Label>
           <Form.Control value={detail} onChange={e=>setDetail(e.target.value)} as="textarea" rows="3" />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={addEvent}>Add</Button>
+        <Accordion.Toggle eventKey="0" as={Button} onClick={addEvent}>
+          Add
+        </Accordion.Toggle>
       </Form>
       </Accordion.Collapse>
     </Card>
