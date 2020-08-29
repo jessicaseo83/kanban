@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Task from './Task'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
+import AddTask from './AddTask';
 
 export default function Column(props) {
   const tasks = props.tasks.map((task, index) => <Task key={task.id} task={task} index={index}></Task>)
@@ -25,6 +26,7 @@ export default function Column(props) {
               </CardGroup>
             )}
           </Droppable>
+          <AddTask onAdd={(title, detail) => props.newTask(props.column.id, title, detail)}/>
         </Card.Body>
       </Card>
       )}

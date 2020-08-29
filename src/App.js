@@ -83,6 +83,31 @@ function App() {
     setData(newData);
   }
 
+  const newTask = (id, title, detail) => {
+    const generateId = Math.random() * 3333;
+    const newId = generateId();
+    const newData = {
+      tasks: {
+        ...data.tasks,
+        [newId]: {
+          id: newId,
+          title: title,
+          detail: detail,
+        }
+      },
+      columns: {
+        ...data.columns,
+        [id]: {
+          ...data.columns[id],
+          taskIds: [...data.columns[id].taskIds, newId]
+        }
+      }
+
+    }
+    console.log(newData);
+    setData(newData);
+  }
+
   return (
     <div className="App" id='pdf'>
       <Header />
@@ -97,7 +122,7 @@ function App() {
                 const column = data.columns[columnId];
                 const tasks = column.taskIds.map(taskId => data.tasks[taskId])
     
-                return <Column key={column.id} column={column} tasks={tasks} index={index} />
+                return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask}/>
               })}
               {provided.placeholder}
             </div>
