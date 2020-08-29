@@ -84,7 +84,7 @@ function App() {
   }
 
   const newTask = (id, title, detail) => {
-    const newId = Math.random() * 3333;
+    const newId = (Math.random() * 3333).toString();
     const newData = {
       tasks: {
         ...data.tasks,
