@@ -6,7 +6,7 @@ import jsPDF from 'jspdf';
 
 export default function Header() {
   const savePdf = function() {
-    html2canvas(document.querySelector('#capture'))
+    html2canvas(document.querySelector('#pdf'))
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF({

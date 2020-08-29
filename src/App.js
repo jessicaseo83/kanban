@@ -84,7 +84,7 @@ function App() {
   }
 
   return (
-    <div className="App" id='capture'>
+    <div className="App" id='pdf'>
       <Header />
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="all-colums" direction="horizontal" type="column">
