@@ -9,8 +9,12 @@ import AddTask from './AddTask';
 
 export default function Column(props) {
   const tasks = props.tasks.map((task, index) => <Task key={task.id} task={task} index={index}></Task>)
+  const [columnName, setColumnName] = useState(props.column.title);
   const [edit, setEdit] = useState(false);
-
+  const handleSubmit = () => {
+    props.editColumnName(columnName);
+    setEdit(false)
+  }
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
       {(provided) => (
@@ -18,13 +22,14 @@ export default function Column(props) {
         <Card.Body>
           {edit === true &&
             <>
-              <Form.Control value={props.column.title} onChange={props.editColumnName}/>
+              <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
+              <Button onClick={handleSubmit}>Submit</Button>
               <Button onClick={()=>setEdit(false)}>Close</Button>
             </>
           }
           {edit === false &&
             <>
-              <Card.Title {...provided.dragHandleProps}>{props.column.title}</Card.Title>
+              <Card.Title {...provided.dragHandleProps}>{columnName}</Card.Title>
               <Button onClick={()=>setEdit(true)}>Edit</Button>
             </>
           }

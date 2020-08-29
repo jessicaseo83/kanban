@@ -113,23 +113,17 @@ function App() {
   const editColumnName = (columnId, newName) => {
     const newData = {
       tasks: {
-        ...data.tasks,
-        [newId]: {
-          id: newId,
-          title: title,
-          detail: detail,
-        }
+        ...data.tasks
       },
       columns: {
         ...data.columns,
-        [id]: {
-          ...data.columns[id],
-          taskIds: [...data.columns[id].taskIds, newId]
+        [columnId]: {
+          ...data.columns[columnId],
+          title: newName
         }
       },
       columnOrder: [...data.columnOrder]
     }
-    console.log(newData);
     setData(newData);
   }
 
@@ -147,7 +141,7 @@ function App() {
                 const column = data.columns[columnId];
                 const tasks = column.taskIds.map(taskId => data.tasks[taskId])
     
-                return <Column editColumnName={(newName)=>setColumnName(column.id, newName)} key={column.id} column={column} tasks={tasks} index={index} newTask={newTask}/>
+                return <Column editColumnName={(newName)=>editColumnName(column.id, newName)} key={column.id} column={column} tasks={tasks} index={index} newTask={newTask}/>
               })}
               {provided.placeholder}
             </div>
