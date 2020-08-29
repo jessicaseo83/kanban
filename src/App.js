@@ -3,19 +3,32 @@ import Header from './components/Navbar';
 import './styles/index.css';
 import initialData from './data/Initialdata';
 import Column from './components/Column';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 
 function App() {
   const [ data, setData ] = useState(initialData);
   
   const onDragEnd = (result) => {
-    const { destination, source, draggableId } = result; 
+    const { destination, source, draggableId, type } = result; 
 
     if(!destination) {
       return;
     }
     if (destination.droppableId === source.droppableId && destination.index === source.index) {
+      return;
+    }
+
+    if (type === 'column') {
+      const newColumnOrder = Array.from(data.columnOrder);
+      newColumnOrder.splice(source.index, 1);
+      newColumnOrder.splice(destination.index, 0, draggableId);
+
+      const newData = {
+        ...data,
+        columnOrder: newColumnOrder,
+      }
+      setData(newData);
       return;
     }
 
@@ -74,14 +87,22 @@ function App() {
     <div className="App">
       <Header />
       <DragDropContext onDragEnd={onDragEnd}>
-        <div style={{display: "flex"}} >
-          {data.columnOrder.map(columnId => {
-            const column = data.columns[columnId];
-            const tasks = column.taskIds.map(taskId => data.tasks[taskId])
-
-            return <Column key={column.id} column={column} tasks={tasks} />
-          })}
-        </div>
+        <Droppable droppableId="all-colums" direction="horizontal" type="column">
+          {provided => (
+            <div style={{display: "flex"}} 
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {data.columnOrder.map((columnId, index) => {
+                const column = data.columns[columnId];
+                const tasks = column.taskIds.map(taskId => data.tasks[taskId])
+    
+                return <Column key={column.id} column={column} tasks={tasks} index={index} />
+              })}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
       </DragDropContext>
     </div>
   );
