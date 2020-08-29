@@ -3,6 +3,8 @@ import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import { Draggable } from 'react-beautiful-dnd';
 
+
+
 export default function Task(props) {
   return (
     <Draggable draggableId={props.task.id} index={props.index}>
