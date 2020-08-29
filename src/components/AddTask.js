@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
@@ -6,8 +6,8 @@ import Button from 'react-bootstrap/Button';
 
 
 export default function AddTask(props) {
-  const title = "hello";
-  const detail = "bye";
+  const [title, setTitle] = useState('');
+  const [detail, setDetail] = useState('');
 
   function addEvent(event) {
     event.preventDefault();
@@ -22,11 +22,11 @@ export default function AddTask(props) {
       <Form>
         <Form.Group controlId="title">
           <Form.Label>Title</Form.Label>
-          <Form.Control placeholder="title" />
+          <Form.Control value={title} onChange={e=>setTitle(e.target.value)}/>
         </Form.Group>
         <Form.Group controlId="detail">
           <Form.Label>Description</Form.Label>
-          <Form.Control as="textarea" rows="3" />
+          <Form.Control value={detail} onChange={e=>setDetail(e.target.value)} as="textarea" rows="3" />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={addEvent}>Add</Button>
       </Form>
