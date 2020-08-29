@@ -15,7 +15,7 @@ export default function Header() {
         format: [28.48, 20]
       });
       pdf.addImage(imgData, 'PNG', 0, 0);
-      pdf.save("download.pdf");  
+      pdf.save("mytasks.pdf");  
     })
   }
 
