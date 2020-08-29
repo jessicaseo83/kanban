@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Navbar';
 import './styles/index.css';
 import initialData from './data/Initialdata';
@@ -7,10 +7,10 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 
 function App() {
-  const [ data, setData ] = useState(window.localStorage.getItem('kanban-data') || initialData);
+  const [ data, setData ] = useState(window.localStorage.getItem('kanban') ? JSON.parse(window.localStorage.getItem('kanban')) : initialData);
   
   useEffect(()=> {
-    
+    localStorage.setItem('kanban', JSON.stringify(data))
   }, [data]);
 
   const onDragEnd = (result) => {
