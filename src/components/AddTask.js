@@ -8,6 +8,12 @@ import Button from 'react-bootstrap/Button';
 export default function AddTask(props) {
   const title = "hello";
   const detail = "bye";
+
+  function addEvent(event) {
+    event.preventDefault();
+    props.onAdd(title, detail)
+  }
+
   return (
     <Accordion defaultActiveKey="1">
     <Card>
@@ -22,7 +28,7 @@ export default function AddTask(props) {
           <Form.Label>Description</Form.Label>
           <Form.Control as="textarea" rows="3" />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={()=>{props.onAdd(title, detail)}}>Add</Button>
+        <Button variant="primary" type="submit" onClick={addEvent}>Add</Button>
       </Form>
       </Accordion.Collapse>
     </Card>

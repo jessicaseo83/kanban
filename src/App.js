@@ -52,8 +52,9 @@ function App() {
             [newColumn.id]: newColumn,
           }
         }
+        console.log(newData);
 
-        setData(newData);
+        // setData(newData);
         return;
     }
     
@@ -84,8 +85,7 @@ function App() {
   }
 
   const newTask = (id, title, detail) => {
-    const generateId = Math.random() * 3333;
-    const newId = generateId();
+    const newId = Math.random() * 3333;
     const newData = {
       tasks: {
         ...data.tasks,
@@ -101,8 +101,8 @@ function App() {
           ...data.columns[id],
           taskIds: [...data.columns[id].taskIds, newId]
         }
-      }
-
+      },
+      columnOrder: [...data.columnOrder]
     }
     console.log(newData);
     setData(newData);
