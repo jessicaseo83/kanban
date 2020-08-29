@@ -52,9 +52,8 @@ function App() {
             [newColumn.id]: newColumn,
           }
         }
-        console.log(newData);
 
-        // setData(newData);
+        setData(newData);
         return;
     }
     
