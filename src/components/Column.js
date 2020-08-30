@@ -51,7 +51,7 @@ export default function Column(props) {
                   <AlertMsg
                     show={modalShow}
                     onHide={() => setModalShow(false)}
-                    deleteColumn={() => props.deleteColumn(props.column.id)}
+                    deleteComp={() => props.deleteColumn(props.column.id)}
                   />
                 </div>
                 <h3>{columnName}</h3>
