@@ -55,7 +55,7 @@ export default function Task(props) {
             <ChangeColumnModal
               show={changeColumnModal}
               onHide={()=>setChangeColumnModal(false)}
-              changeColumns={()=>console.log('columnchanged')}
+              changeColumns={(param)=>console.log(param)}
               columnNamesInOrder={props.columnNamesInOrder}
             />
             <Accordion.Toggle as={Card.Header} eventKey="0">
