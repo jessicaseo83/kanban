@@ -21,12 +21,13 @@ export default function ContextMenu(){
     top: `${state.y}px`,
     left: `${state.x+5}px`
   }
-
-  return (
-    <div className='custom-context' id='text' style={contextMenuStyle}>
-      <div className='custom-context-item'>
-        Move to a different column
+  if (state.visible === true) {
+    return (
+      <div className='custom-context' id='text' style={contextMenuStyle}>
+        <div className='custom-context-item'>
+          Move to a different column
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else return null;
 }
