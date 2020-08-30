@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
-import ContextMenu from './ContextMenu';
 import { Draggable } from 'react-beautiful-dnd';
 import { BsFillTrashFill } from "react-icons/bs";
 
 
 export default function Task(props) {
   const [contextMenu, setContextMenu] = useState({visible: false, x: 0, y: 0});
+  const []
   const contextMenuStyle={
-    position: 'absolute',
+    position: 'fixed',
     top: `${contextMenu.y}px`,
     left: `${contextMenu.x+5}px`
   }
@@ -18,11 +18,16 @@ export default function Task(props) {
     event.preventDefault();
     const clickX = event.clientX;
     const clickY = event.clientY;
-    setContextMenu({visible: true, x: clickX, y: clickY});
+    setContextMenu(prev=>({...prev, visible: true, x: clickX, y: clickY}));
     document.addEventListener('click', function(event) {
       event.preventDefault();
       setContextMenu({visible: false, x:0, y:0});
     })
+  }
+
+  function showColumnChangeModal(event){
+    event.preventDefault();
+
   }
 
   return (
@@ -37,10 +42,8 @@ export default function Task(props) {
             onContextMenu = {showContextMenu}
             >
             {contextMenu.visible === true &&
-              <div className='custom-context' id='text' style={contextMenuStyle}>
-                <div className='custom-context-item'>
-                  Move to a different column
-                </div>
+              <div className='custom-context' style={contextMenuStyle} onClick={showColumnChangeModal}>
+                Move
               </div>
             }
             <Accordion.Toggle as={Card.Header} eventKey="0">{props.task.title}<BsFillTrashFill onClick={props.onDelete}/></Accordion.Toggle>
