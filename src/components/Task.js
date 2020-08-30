@@ -6,8 +6,9 @@ import { BsFillTrashFill } from "react-icons/bs";
 
 
 export default function Task(props) {
+
   return (
-    <Draggable draggableId={props.task.id} index={props.index}>
+    <Draggable draggableId={props.task.id} index={props.index} >
       {(provided) => (
         <Accordion defaultActiveKey="1">
 
@@ -15,6 +16,7 @@ export default function Task(props) {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
+            onContextMenu={e=>e.preventDefault()}
             >
             <Accordion.Toggle as={Card.Header} eventKey="0">{props.task.title}<BsFillTrashFill onClick={props.onDelete}/></Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
