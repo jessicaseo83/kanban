@@ -6,14 +6,15 @@ import Form from 'react-bootstrap/Form';
 import Task from './Task'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import AddTask from './AddTask';
-import { BsFillTrashFill } from "react-icons/bs";
-
+import { BsFillTrashFill, BsPencil } from "react-icons/bs";
+import './Column.css'
 
 export default function Column(props) {
   const tasks = props.tasks.map((task, index) => <Task key={task.id} task={task} index={index} onDelete={() => props.deleteTask(task.id, props.column.id)}></Task>)
   const propTasks = props.column.title;
   const [columnName, setColumnName] = useState(props.column.title);
   const [edit, setEdit] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const handleSubmit = () => {
     props.editColumnName(columnName);
@@ -28,23 +29,34 @@ export default function Column(props) {
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
       {(provided) => (
-        <Card {...provided.draggableProps} ref={provided.innerRef}>
-        <Card.Body>
+        <Card {...provided.draggableProps} ref={provided.innerRef}className="columns" style={{ width: '18rem' }}>
+        
           {edit === true &&
             <>
-              <Card.Title {...provided.dragHandleProps}>
+              <Card.Header {...provided.dragHandleProps} className="card-header">
                 <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
-              </Card.Title>
+              </Card.Header>
               <Button onClick={handleSubmit}>Submit</Button>
               <Button onClick={handleClose}>Close</Button>
             </>
           }
           {edit === false &&
             <>
-              <Card.Title {...provided.dragHandleProps}>{columnName}<BsFillTrashFill onClick={() => props.deleteColumn(props.column.id)}/></Card.Title>
-              <Button onClick={()=>setEdit(true)}>Edit</Button>
+             
+              <Card.Header {...provided.dragHandleProps} className="card-header">
+                <div className="edit-delete-btn">
+                  <BsPencil onClick={()=>setEdit(true)}>Edit</BsPencil>
+                  <BsFillTrashFill onClick={() => setModalShow(true)}/>
+                  <MyVerticallyCenteredModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                  />
+                </div>
+                <h3>{columnName}</h3>
+              </Card.Header>
             </>
           }
+          <Card.Body className="card-body">
           <Droppable droppableId={props.column.id} type="task">
             {(provided) => (
               <CardGroup 

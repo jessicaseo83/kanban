@@ -3,13 +3,14 @@ import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import { Draggable } from 'react-beautiful-dnd';
 import { BsFillTrashFill } from "react-icons/bs";
+import './Task.css'
 
 
 export default function Task(props) {
   return (
     <Draggable draggableId={props.task.id} index={props.index}>
       {(provided) => (
-        <Accordion defaultActiveKey="1">
+        <Accordion className="task-cards">
 
           <Card 
             {...provided.draggableProps}

@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import './Navbar.css'
 
 export default function Header() {
   const savePdf = function() {
@@ -20,11 +21,11 @@ export default function Header() {
   }
 
   return (
-    <Navbar bg="light" fixed="top">
+    <Navbar className="nav" fixed="top">
+      <Navbar.Brand>Kanban Board</Navbar.Brand>
       <Button onClick = {savePdf}>
         Print PDF
       </Button>
-      <Navbar.Brand>Brand text</Navbar.Brand>
     </Navbar>
   )
 }
