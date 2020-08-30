@@ -1,32 +1,39 @@
 import React from 'react';
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
-import { FormControl } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 export default function ChangeColumnModal(props) {
+
+  const menuChangeDropdown = props.columnNamesInOrder.map((columnObject)=>(
+      <option value={columnObject.columnId} key={`dropdown-${columnObject.columnName}`}>
+        {columnObject.columnName}
+      </option> 
+    )
+  )
+
   return(
     <Modal
       show={props.show}
-      size="md"
+      size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Are you sure??
+          Move To Different Column
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>
-          Change column to:
-        </p>
-        <FormControl>
-
-      
-        </FormControl>
+        <Form.Group title="Column">
+          <Form.Label>Column:</Form.Label>
+          <Form.Control as="select">
+            {menuChangeDropdown}
+          </Form.Control>
+        </Form.Group>
       </Modal.Body>
       <Modal.Footer>
-      <Button onClick={props.deleteComp}>Delete</Button>
+        <Button onClick={props.deleteComp}>Change</Button>
         <Button onClick={props.onHide}>Cancel</Button>
       </Modal.Footer>
     </Modal>
