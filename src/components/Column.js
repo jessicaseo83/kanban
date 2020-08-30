@@ -58,7 +58,7 @@ export default function Column(props) {
               </CardGroup>
             )}
           </Droppable>
-          <AddTask onAdd={(title, detail) => props.newTask(props.column.id, title, detail)}/>
+          <AddTask columnId={props.column.id} onAdd={(title, detail) => props.newTask(props.column.id, title, detail)}/>
         </Card.Body>
       </Card>
       )}

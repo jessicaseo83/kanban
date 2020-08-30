@@ -18,7 +18,7 @@ export default function AddColumn(props) {
       <Accordion.Toggle as={Card.Header} eventKey="0">+</Accordion.Toggle>
       <Accordion.Collapse eventKey="0" >
       <Form>
-        <Form.Group controlId="title">
+        <Form.Group controlId="column-title">
           <Form.Label>Title</Form.Label>
           <Form.Control value={title} onChange={e=>setTitle(e.target.value)}/>
         </Form.Group>

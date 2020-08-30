@@ -22,11 +22,11 @@ export default function AddTask(props) {
     <Accordion.Toggle as={Card.Header} eventKey="0">+</Accordion.Toggle>
     <Accordion.Collapse eventKey="0" >
       <Form>
-        <Form.Group controlId="title">
+        <Form.Group controlId={`editTitleForColumn${props.columnId}`}>
           <Form.Label>Title</Form.Label>
           <Form.Control value={title} onChange={e=>setTitle(e.target.value)}/>
         </Form.Group>
-        <Form.Group controlId="detail">
+        <Form.Group controlId={`addTaskDetailColumn${props.columnId}`}>
           <Form.Label>Description</Form.Label>
           <Form.Control value={detail} onChange={e=>setDetail(e.target.value)} as="textarea" rows="3" />
         </Form.Group>
