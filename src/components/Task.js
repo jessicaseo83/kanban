@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import { Draggable } from 'react-beautiful-dnd';
-import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillTrashFill, BsCaretDownFill } from "react-icons/bs";
 import './Task.css'
 
 
@@ -16,8 +16,13 @@ export default function Task(props) {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
+            className="task-card"
             >
-            <Accordion.Toggle as={Card.Header} eventKey="0">{props.task.title}<BsFillTrashFill onClick={props.onDelete}/></Accordion.Toggle>
+            <Accordion.Toggle as={Card.Header} eventKey="0">
+              <div className="delete-task-btn"><BsFillTrashFill  onClick={props.onDelete}/></div>
+              <h5>{props.task.title}</h5>
+              <div className="open-detail-btn"><BsCaretDownFill /></div>
+              </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
               <Card.Body>
                 {props.task.detail}

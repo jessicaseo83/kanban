@@ -1,5 +1,28 @@
 .task-cards {
-
   margin: 0.5em;
- 
+}
+
+.task-card:hover {
+  
+  box-shadow: 10px 10px 5px 0px #a89d8c;
+}
+
+.task-card .delete-task-btn {
+  display: flex;
+  justify-content: flex-end;
+  visibility: hidden;
+}
+
+.task-card:hover .delete-task-btn {
+  visibility: visible;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.task-card .open-detail-btn {
+  visibility: hidden;
+}
+
+.task-card:hover .open-detail-btn {
+  visibility: visible;
 }
