@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState }from 'react';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import { Draggable } from 'react-beautiful-dnd';
 import { BsFillTrashFill, BsCaretDownFill } from "react-icons/bs";
+import AlertMsg from './AlertMsg';
 import './Task.css'
 
 
 export default function Task(props) {
+  const [modalShow, setModalShow] = useState(false);
+
   return (
     <Draggable draggableId={props.task.id} index={props.index}>
       {(provided) => (
@@ -19,7 +22,12 @@ export default function Task(props) {
             className="task-card"
             >
             <Accordion.Toggle as={Card.Header} eventKey="0">
-              <div className="delete-task-btn"><BsFillTrashFill  onClick={props.onDelete}/></div>
+              <div className="delete-task-btn"><BsFillTrashFill onClick={() => setModalShow(true)}/></div>
+              <AlertMsg
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                deleteComp={props.onDelete}
+              />
               <h5>{props.task.title}</h5>
               <div className="open-detail-btn"><BsCaretDownFill /></div>
               </Accordion.Toggle>
