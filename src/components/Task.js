@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import { Draggable } from 'react-beautiful-dnd';
@@ -7,7 +7,7 @@ import { BsFillTrashFill } from "react-icons/bs";
 
 export default function Task(props) {
   const [contextMenu, setContextMenu] = useState({visible: false, x: 0, y: 0});
-  const []
+  const [modal, setModal] = useState(null);
   const contextMenuStyle={
     position: 'fixed',
     top: `${contextMenu.y}px`,
