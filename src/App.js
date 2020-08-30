@@ -167,6 +167,10 @@ function App() {
     }});
   }
   
+  const columnNamesInOrder = data.columnOrder.map((columnId)=> {
+    return {columnId, columnName: data.columns[columnId].title};
+  })
+
   const deleteColumn = (columnId) => {
     const newColumns = {
       ...data.columns,
@@ -207,7 +211,19 @@ function App() {
               {data.columnOrder.map((columnId, index) => {
                 const column = data.columns[columnId];
                 const tasks = column.taskIds.map(taskId => data.tasks[taskId])
-                return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask} deleteTask={deleteTask} editColumnName={(newName)=>editColumnName(column.id, newName)} deleteColumn={deleteColumn}/>
+                return (
+                  <Column
+                    key={column.id}
+                    column={column}
+                    tasks={tasks}
+                    index={index}
+                    newTask={newTask}
+                    deleteTask={deleteTask}
+                    editColumnName={(newName)=>editColumnName(column.id, newName)}
+                    deleteColumn={deleteColumn}
+                    columnNamesInOrder={columnNamesInOrder}
+                  />
+                )
               })}
               {provided.placeholder}
               {data.columnOrder.length < 5 && <AddColumn onAdd={newColumn}/>}
