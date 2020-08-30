@@ -21,7 +21,7 @@ export default function AlertMsg(props) {
         </p>
       </Modal.Body>
       <Modal.Footer>
-      <Button onClick={props.deleteColumn}>Delete</Button>
+      <Button onClick={props.deleteComp}>Delete</Button>
         <Button onClick={props.onHide}>Cancel</Button>
       </Modal.Footer>
     </Modal>
