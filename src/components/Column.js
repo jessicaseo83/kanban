@@ -15,7 +15,6 @@ export default function Column(props) {
   const propTasks = props.column.title;
   const [columnName, setColumnName] = useState(props.column.title);
   const [edit, setEdit] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
 
   const handleSubmit = () => {
     props.editColumnName(columnName);
@@ -30,8 +29,8 @@ export default function Column(props) {
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
       {(provided) => (
-        <Card {...provided.draggableProps} ref={provided.innerRef}className="columns" style={{ width: '18rem' }}>
-        
+        <Card {...provided.draggableProps} ref={provided.innerRef} className="columns" style={{ width: '18rem' }}>
+          
           {edit === true &&
             <>
               <Card.Header {...provided.dragHandleProps} className="card-header">
@@ -47,7 +46,7 @@ export default function Column(props) {
               <Card.Header {...provided.dragHandleProps} className="card-header">
                 <div className="edit-delete-btn">
                   <BsPencil onClick={()=>setEdit(true)}>Edit</BsPencil>
-                  <BsFillTrashFill onClick={() => setModalShow(true)}/>
+                  <BsFillTrashFill onClick={() => props.deleteColumn(props.column.id)}/>
                   {/* <AlertMsg
                     show={modalShow}
                     onHide={() => setModalShow(false)}
@@ -63,9 +62,7 @@ export default function Column(props) {
             {(provided) => (
               <CardGroup 
               ref={provided.innerRef}
-              {...provided.droppableProps} 
-              style={{display: "flex", flexDirection: "column", flexGrow: 1}}
-              
+              {...provided.droppableProps}
               >
                 {tasks}
                 {provided.placeholder}
