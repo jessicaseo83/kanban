@@ -32,7 +32,9 @@ export default function Column(props) {
         <Card.Body>
           {edit === true &&
             <>
-              <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
+              <Card.Title {...provided.dragHandleProps}>
+                <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
+              </Card.Title>
               <Button onClick={handleSubmit}>Submit</Button>
               <Button onClick={handleClose}>Close</Button>
             </>
