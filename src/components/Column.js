@@ -11,7 +11,7 @@ import AlertMsg from './AlertMsg';
 import './Column.css'
 
 export default function Column(props) {
-  const tasks = props.tasks.map((task, index) => <Task key={task.id} task={task} index={index} onDelete={() => props.deleteTask(task.id, props.column.id)}></Task>)
+  const tasks = props.tasks.map((task, index) => (<Task key={task.id} task={task} index={index} columnNamesInOrder={props.columnNamesInOrder} onDelete={() => props.deleteTask(task.id, props.column.id)}></Task>))
   const propTasks = props.column.title;
   const [columnName, setColumnName] = useState(props.column.title);
   const [edit, setEdit] = useState(false);
