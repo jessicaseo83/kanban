@@ -5,8 +5,9 @@ import Task from './Task'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import AddTask from './AddTask';
 
+
 export default function Column(props) {
-  const tasks = props.tasks.map((task, index) => <Task key={task.id} task={task} index={index}></Task>)
+  const tasks = props.tasks.map((task, index) => <Task key={task.id} task={task} index={index} onDelete={() => props.deleteTask(task.id, props.column.id)}></Task>)
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
       {(provided) => (

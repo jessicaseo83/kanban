@@ -129,6 +129,33 @@ function App() {
     setData(newData);
   }
 
+  const deleteTask = (taskId, columnId) => {
+    console.log(data);
+    const newTasks = {
+      ...data.tasks,
+    }
+    delete newTasks[taskId];
+    const columnToEdit = [...data.columns[columnId].taskIds];
+    // console.log(taskId, columnId);
+    console.log(columnToEdit);
+    const index = columnToEdit.indexOf(taskId);
+    console.log(index);
+    if (index > -1) {
+      columnToEdit.splice(index, 1);
+    }
+    setData({
+      ...data,
+      tasks: newTasks,
+      columns: {
+        ...data.columns,
+        [columnId]: {
+          ...data.columns[columnId],
+          taskIds: columnToEdit,
+      }
+    }});
+  }
+
+
   return (
     <div className="App" id='pdf'>
       <Header />
@@ -143,7 +170,7 @@ function App() {
                 const column = data.columns[columnId];
                 const tasks = column.taskIds.map(taskId => data.tasks[taskId])
     
-                return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask}/>
+                return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask} deleteTask={deleteTask}/>
               })}
               {provided.placeholder}
               <AddColumn onAdd={newColumn}/>
