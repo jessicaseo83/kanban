@@ -171,6 +171,10 @@ function App() {
     return {columnId, columnName: data.columns[columnId].title};
   })
 
+  const changeTaskColumn = (oldColumnId, newColumnId, taskId) =>{
+    setData
+  }
+
   const deleteColumn = (columnId) => {
     const newColumns = {
       ...data.columns,
@@ -222,6 +226,7 @@ function App() {
                     editColumnName={(newName)=>editColumnName(column.id, newName)}
                     deleteColumn={deleteColumn}
                     columnNamesInOrder={columnNamesInOrder}
+                    onColumnChange={changeTaskColumn}
                   />
                 )
               })}
