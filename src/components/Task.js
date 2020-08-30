@@ -7,6 +7,12 @@ import { BsFillTrashFill } from "react-icons/bs";
 
 export default function Task(props) {
 
+  function showContextMenu(event){
+    event.preventDefault();
+    const xPos = event.pageX + "px";
+    const yPos = event.pageY + 'px';
+  }
+
   return (
     <Draggable draggableId={props.task.id} index={props.index} >
       {(provided) => (
@@ -16,7 +22,7 @@ export default function Task(props) {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
-            onContextMenu={e=>e.preventDefault()}
+            onContextMenu={showContextMenu}
             >
             <Accordion.Toggle as={Card.Header} eventKey="0">{props.task.title}<BsFillTrashFill onClick={props.onDelete}/></Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
