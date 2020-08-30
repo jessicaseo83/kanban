@@ -11,11 +11,18 @@ import { BsFillTrashFill } from "react-icons/bs";
 
 export default function Column(props) {
   const tasks = props.tasks.map((task, index) => <Task key={task.id} task={task} index={index} onDelete={() => props.deleteTask(task.id, props.column.id)}></Task>)
+  const propTasks = props.column.title;
   const [columnName, setColumnName] = useState(props.column.title);
   const [edit, setEdit] = useState(false);
+
   const handleSubmit = () => {
     props.editColumnName(columnName);
-    setEdit(false)
+    setEdit(false);
+  }
+
+  const handleClose = () => {
+    setColumnName(propTasks);
+    setEdit(false);
   }
   
   return (
@@ -27,7 +34,7 @@ export default function Column(props) {
             <>
               <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
               <Button onClick={handleSubmit}>Submit</Button>
-              <Button onClick={()=>setEdit(false)}>Close</Button>
+              <Button onClick={handleClose}>Close</Button>
             </>
           }
           {edit === false &&
