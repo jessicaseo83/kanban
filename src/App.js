@@ -130,16 +130,12 @@ function App() {
   }
 
   const deleteTask = (taskId, columnId) => {
-    console.log(data);
     const newTasks = {
       ...data.tasks,
     }
     delete newTasks[taskId];
     const columnToEdit = [...data.columns[columnId].taskIds];
-    // console.log(taskId, columnId);
-    console.log(columnToEdit);
     const index = columnToEdit.indexOf(taskId);
-    console.log(index);
     if (index > -1) {
       columnToEdit.splice(index, 1);
     }
@@ -154,7 +150,33 @@ function App() {
       }
     }});
   }
+  
+  const deleteColumn = (columnId) => {
+    const newColumns = {
+      ...data.columns,
+    }
+    const newTasks = {
+      ...data.tasks,
+    }
+    const taskstoDelete = [...data.columns[columnId].taskIds];
 
+    taskstoDelete.forEach(taskId => delete newTasks[taskId]);
+    delete newColumns[columnId];
+
+    const newColumnOrder = [...data.columnOrder];
+    const index = newColumnOrder.indexOf(columnId);
+    if (index > -1) {
+      newColumnOrder.splice(index, 1);
+    }
+
+    setData({
+      ...data,
+      tasks: newTasks,
+      columns: newColumns,
+      columnOrder: newColumnOrder
+    })
+
+  }
 
   return (
     <div className="App" id='pdf'>
@@ -170,7 +192,7 @@ function App() {
                 const column = data.columns[columnId];
                 const tasks = column.taskIds.map(taskId => data.tasks[taskId])
     
-                return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask} deleteTask={deleteTask}/>
+                return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask} deleteTask={deleteTask} deleteColumn={deleteColumn}/>
               })}
               {provided.placeholder}
               <AddColumn onAdd={newColumn}/>

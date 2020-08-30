@@ -4,6 +4,7 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import Task from './Task'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import AddTask from './AddTask';
+import { BsFillTrashFill } from "react-icons/bs";
 
 
 export default function Column(props) {
@@ -13,7 +14,7 @@ export default function Column(props) {
       {(provided) => (
         <Card {...provided.draggableProps} ref={provided.innerRef}>
         <Card.Body>
-          <Card.Title {...provided.dragHandleProps}>{props.column.title}</Card.Title>
+          <Card.Title {...provided.dragHandleProps}>{props.column.title}<BsFillTrashFill onClick={() => props.deleteColumn(props.column.id)}/></Card.Title>
           <Droppable droppableId={props.column.id} type="task">
             {(provided) => (
               <CardGroup 
