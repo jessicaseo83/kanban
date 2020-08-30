@@ -6,15 +6,18 @@ import Form from 'react-bootstrap/Form';
 import Task from './Task'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import AddTask from './AddTask';
+import { BsFillTrashFill } from "react-icons/bs";
+
 
 export default function Column(props) {
-  const tasks = props.tasks.map((task, index) => <Task key={task.id} task={task} index={index}></Task>)
+  const tasks = props.tasks.map((task, index) => <Task key={task.id} task={task} index={index} onDelete={() => props.deleteTask(task.id, props.column.id)}></Task>)
   const [columnName, setColumnName] = useState(props.column.title);
   const [edit, setEdit] = useState(false);
   const handleSubmit = () => {
     props.editColumnName(columnName);
     setEdit(false)
   }
+  
   return (
     <Draggable draggableId={props.column.id} index={props.index}>
       {(provided) => (
@@ -29,7 +32,7 @@ export default function Column(props) {
           }
           {edit === false &&
             <>
-              <Card.Title {...provided.dragHandleProps}>{columnName}</Card.Title>
+              <Card.Title {...provided.dragHandleProps}>{columnName}<BsFillTrashFill onClick={() => props.deleteColumn(props.column.id)}/></Card.Title>
               <Button onClick={()=>setEdit(true)}>Edit</Button>
             </>
           }

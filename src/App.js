@@ -3,6 +3,7 @@ import Header from './components/Navbar';
 import './styles/index.css';
 import initialData from './data/Initialdata';
 import Column from './components/Column';
+import AddColumn from './components/AddColumn';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 
@@ -127,6 +128,72 @@ function App() {
     setData(newData);
   }
 
+  const newColumn = (title) => {
+    const newId = (Math.random() * 9999).toString();
+    const newData = {
+      ...data,
+      columns: {
+        ...data.columns,
+        [newId]: {
+          id: newId,
+          title: title,
+          taskIds: [],
+        }
+      },
+      columnOrder: [...data.columnOrder, newId]
+    }
+    setData(newData);
+  }
+
+  const deleteTask = (taskId, columnId) => {
+    const newTasks = {
+      ...data.tasks,
+    }
+    delete newTasks[taskId];
+    const columnToEdit = [...data.columns[columnId].taskIds];
+    const index = columnToEdit.indexOf(taskId);
+    if (index > -1) {
+      columnToEdit.splice(index, 1);
+    }
+    setData({
+      ...data,
+      tasks: newTasks,
+      columns: {
+        ...data.columns,
+        [columnId]: {
+          ...data.columns[columnId],
+          taskIds: columnToEdit,
+      }
+    }});
+  }
+  
+  const deleteColumn = (columnId) => {
+    const newColumns = {
+      ...data.columns,
+    }
+    const newTasks = {
+      ...data.tasks,
+    }
+    const taskstoDelete = [...data.columns[columnId].taskIds];
+
+    taskstoDelete.forEach(taskId => delete newTasks[taskId]);
+    delete newColumns[columnId];
+
+    const newColumnOrder = [...data.columnOrder];
+    const index = newColumnOrder.indexOf(columnId);
+    if (index > -1) {
+      newColumnOrder.splice(index, 1);
+    }
+
+    setData({
+      ...data,
+      tasks: newTasks,
+      columns: newColumns,
+      columnOrder: newColumnOrder
+    })
+
+  }
+
   return (
     <div className="App" id='pdf'>
       <Header />
@@ -140,10 +207,10 @@ function App() {
               {data.columnOrder.map((columnId, index) => {
                 const column = data.columns[columnId];
                 const tasks = column.taskIds.map(taskId => data.tasks[taskId])
-    
-                return <Column editColumnName={(newName)=>editColumnName(column.id, newName)} key={column.id} column={column} tasks={tasks} index={index} newTask={newTask}/>
+                return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask} deleteTask={deleteTask} editColumnName={(newName)=>editColumnName(column.id, newName)} deleteColumn={deleteColumn}/>
               })}
               {provided.placeholder}
+              <AddColumn onAdd={newColumn}/>
             </div>
           )}
         </Droppable>
