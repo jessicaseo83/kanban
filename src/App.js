@@ -198,9 +198,9 @@ function App() {
     <div className="App" id='pdf'>
       <Header />
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="all-colums" direction="horizontal" type="column">
+        <Droppable droppableId="all-colums" direction="horizontal" type="column" className="column-container">
           {provided => (
-            <div style={{display: "flex"}} 
+            <div style={{display: "flex", justifyContent: "center"}} 
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
@@ -210,7 +210,7 @@ function App() {
                 return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask} deleteTask={deleteTask} editColumnName={(newName)=>editColumnName(column.id, newName)} deleteColumn={deleteColumn}/>
               })}
               {provided.placeholder}
-              <AddColumn onAdd={newColumn}/>
+              {data.columnOrder.length < 5 && <AddColumn onAdd={newColumn}/>}
             </div>
           )}
         </Droppable>

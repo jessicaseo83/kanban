@@ -1,0 +1,26 @@
+.columns {
+  display: flex;
+  margin: 2em;
+  width: 15rem;
+}
+
+.card-header {
+  background-color: #f5f598;
+}
+
+.card-header .edit-delete-btn {
+  display: flex;
+  justify-content: flex-end;
+  visibility: hidden;
+}
+
+.card-header:hover .edit-delete-btn {
+  visibility: visible;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+}

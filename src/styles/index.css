@@ -1,7 +1,8 @@
 .App {
   font-family: sans-serif;
   text-align: center;
-  margin: 6rem 0;
+  margin-top: 5em;
+  background-color: azure;
 }
 
 .custom-context{

@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
 import { Draggable } from 'react-beautiful-dnd';
-import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillTrashFill, BsCaretDownFill } from "react-icons/bs";
+import AlertMsg from './AlertMsg';
+import ChangeColumnModal from './ChangeColumnModal';
+import './Task.css'
 
 
 export default function Task(props) {
   const [contextMenu, setContextMenu] = useState({visible: false, x: 0, y: 0});
-  const [modal, setModal] = useState(null);
+  const [changeColumnModal, setChangeColumnModal] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
   const contextMenuStyle={
     position: 'fixed',
     top: `${contextMenu.y}px`,
@@ -27,18 +31,19 @@ export default function Task(props) {
 
   function showColumnChangeModal(event){
     event.preventDefault();
-
+    setChangeColumnModal(true);
   }
 
   return (
     <Draggable draggableId={props.task.id} index={props.index} >
       {(provided) => (
-        <Accordion defaultActiveKey="1">
+        <Accordion className="task-cards">
 
           <Card 
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
+            className="task-card"
             onContextMenu = {showContextMenu}
             >
             {contextMenu.visible === true &&
@@ -46,7 +51,23 @@ export default function Task(props) {
                 Move
               </div>
             }
-            <Accordion.Toggle as={Card.Header} eventKey="0">{props.task.title}<BsFillTrashFill onClick={props.onDelete}/></Accordion.Toggle>
+            <ChangeColumnModal
+              show={changeColumnModal}
+              onChancel={()=>setChangeColumnModal(false)}
+              changeColumns={()=>console.log('columnchanged')}
+            />
+            <Accordion.Toggle as={Card.Header} eventKey="0">
+              <div className="delete-task-btn">
+                <BsFillTrashFill onClick={() => setModalShow(true)}/>
+              </div>
+              <AlertMsg
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                deleteComp={props.onDelete}
+              />
+              <h5>{props.task.title}</h5>
+              <div className="open-detail-btn"><BsCaretDownFill /></div>
+              </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
               <Card.Body>
                 {props.task.detail}
