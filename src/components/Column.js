@@ -7,6 +7,7 @@ import Task from './Task'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import AddTask from './AddTask';
 import { BsFillTrashFill, BsPencil } from "react-icons/bs";
+import AlertMsg from './AlertMsg';
 import './Column.css'
 
 export default function Column(props) {
@@ -47,10 +48,11 @@ export default function Column(props) {
                 <div className="edit-delete-btn">
                   <BsPencil onClick={()=>setEdit(true)}>Edit</BsPencil>
                   <BsFillTrashFill onClick={() => setModalShow(true)}/>
-                  <MyVerticallyCenteredModal
+                  {/* <AlertMsg
                     show={modalShow}
                     onHide={() => setModalShow(false)}
-                  />
+                    deleteColumn={() => props.deleteColumn(props.column.id)}
+                  /> */}
                 </div>
                 <h3>{columnName}</h3>
               </Card.Header>
