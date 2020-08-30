@@ -23,10 +23,11 @@ export default function Task(props) {
     const clickX = event.clientX;
     const clickY = event.clientY;
     setContextMenu(prev=>({...prev, visible: true, x: clickX, y: clickY}));
-    document.addEventListener('click', function(event) {
+    const closeContextMenu = (event) => {
       event.preventDefault();
       setContextMenu({visible: false, x:0, y:0});
-    })
+    }
+    document.addEventListener('click', closeContextMenu)
   }
 
   function showColumnChangeModal(event){
@@ -53,8 +54,9 @@ export default function Task(props) {
             }
             <ChangeColumnModal
               show={changeColumnModal}
-              onChancel={()=>setChangeColumnModal(false)}
+              onHide={()=>setChangeColumnModal(false)}
               changeColumns={()=>console.log('columnchanged')}
+              columnNamesInOrder={props.columnNamesInOrder}
             />
             <Accordion.Toggle as={Card.Header} eventKey="0">
               <div className="delete-task-btn">
