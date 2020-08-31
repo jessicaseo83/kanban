@@ -4,7 +4,7 @@ Good Old Kanban is a simple, single-page Kanban board React app.
 
 You can make your own to-do list and progress board with pastel coloured sticky note theme. You can drag and drop tasks and columns and also can edit and delete. Mobile version is also supported!
  
-This app is deployed with Featurepeek. You can enjoy the app ->[Here](https://dashboard.featurepeek.com/peek/1jwhvqyk#/)
+This app is deployed with Featurepeek. You can enjoy the app ->[Here](https://dashboard.featurepeek.com/peek/vn9hw66l#/)
 
 
 ## Screenshots
