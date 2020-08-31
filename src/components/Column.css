@@ -1,6 +1,7 @@
 .columns {
   display: flex;
   margin: 0.5em;
+  margin-top: 2em;
   width: 13rem;
   padding-bottom: 3rem;
 }
