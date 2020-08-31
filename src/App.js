@@ -172,7 +172,25 @@ function App() {
   })
 
   const changeTaskColumn = (oldColumnId, newColumnId, taskId) =>{
-    setData
+    const oldColumnNewTaskIds = [...data.columns[oldColumnId].taskIds];
+    const index = oldColumnNewTaskIds.indexOf(taskId);
+    if (index > -1) {
+      oldColumnNewTaskIds.splice(index, 1);
+    }
+    const newColumnNewTaskIds = [...data.columns[newColumnId].taskIds]
+    newColumnNewTaskIds.push(taskId);
+    const newColumns = {
+      ...data.columns,
+      [oldColumnId]: {
+        ... data.columns[oldColumnId],
+        taskIds: oldColumnNewTaskIds
+      },
+      [newColumnId]: {
+        ...data.columns[newColumnId],
+        taskIds: newColumnNewTaskIds
+      }
+    }
+    setData({...data, columns: newColumns});
   }
 
   const deleteColumn = (columnId) => {
