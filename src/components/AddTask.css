@@ -10,9 +10,10 @@
 .add-task-btn {
   display: flex;
   justify-content: flex-end;
+ 
 }
 
-.btn {
+.add-task-confirm {
   background-color: #448ff1;
   border: #448ff1;
 }

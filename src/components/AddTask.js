@@ -32,7 +32,7 @@ export default function AddTask(props) {
           <Form.Control value={detail} onChange={e=>setDetail(e.target.value)} as="textarea" rows="3" />
         </Form.Group>
         <div className="add-task-btn">
-        <Accordion.Toggle eventKey="0" as={Button} size="sm" onClick={addEvent}>
+        <Accordion.Toggle className="add-task-confirm" eventKey="0" as={Button} size="sm" onClick={addEvent}>
           Add Task
         </Accordion.Toggle>
         </div>
