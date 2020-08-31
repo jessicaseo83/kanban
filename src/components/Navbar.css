@@ -3,3 +3,7 @@
   justify-content: space-between;
   background-color: #f5aea9;
 }
+.brand-logo {
+  font-family: 'Leckerli One', cursive;
+  font-size: 28px;
+}

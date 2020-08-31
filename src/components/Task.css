@@ -3,6 +3,8 @@
 }
 .task-cards {
   margin: 0.5em;
+  font-family: 'Indie Flower', cursive;
+  
 }
 
 .task-card:hover {

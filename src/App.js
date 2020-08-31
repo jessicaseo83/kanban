@@ -182,7 +182,7 @@ function App() {
     const newColumns = {
       ...data.columns,
       [oldColumnId]: {
-        ... data.columns[oldColumnId],
+        ...data.columns[oldColumnId],
         taskIds: oldColumnNewTaskIds
       },
       [newColumnId]: {
@@ -219,12 +219,34 @@ function App() {
     })
 
   }
+
+  function clearBoard() {
+    setData({
+      tasks: {},
+      columns: {'c1' : {
+        id: 'c1',
+        title: 'To do',
+        taskIds: [],
+      },
+      'c2' : {
+        id: 'c2',
+        title: 'In progress',
+        taskIds: [],
+      },
+      'c3' : {
+        id: 'c3',
+        title: 'Done',
+        taskIds: [],
+      }},
+      columnOrder: ['c1', 'c2', 'c3']
+    })
+  }
   
 
   return (
     <div className="App" id='pdf'>
       
-      <Header />
+      <Header clearBoard={clearBoard}/>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="all-colums" direction="horizontal" type="column" className="column-container">
           {provided => (
