@@ -27,7 +27,7 @@ export default function Task(props) {
       event.preventDefault();
       setContextMenu({visible: false, x:0, y:0});
     }
-    document.addEventListener('click', closeContextMenu)
+    document.addEventListener('click', closeContext);
   }
 
   function showColumnChangeModal(event){
