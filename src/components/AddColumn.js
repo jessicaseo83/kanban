@@ -17,7 +17,7 @@ export default function AddColumn(props) {
   return (
     <Accordion className="add-columns">
       <Card>
-      <Accordion.Toggle className="add-task-btn" as={Card.Header} eventKey="0"> <BsFillPlusCircleFill /> </Accordion.Toggle>
+      <Accordion.Toggle className="add-column-btn" as={Card.Header} eventKey="0"> <BsFillPlusCircleFill /> </Accordion.Toggle>
       <Accordion.Collapse eventKey="0" >
       <Form>
         <Form.Group controlId="column-title">
