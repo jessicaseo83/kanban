@@ -28,7 +28,7 @@ export default function Header(props) {
 
   return (
     <Navbar className="nav" fixed="top">
-      <Navbar.Brand>Good Old Kanban</Navbar.Brand>
+      <Navbar.Brand className="brand-logo">Good Old Kanban</Navbar.Brand>
       <AlertMsg show={showAlertMsg} onHide={()=>setShowAlertMsg(false)} deleteComp={handleClearBoard}/>
       <div>
         <Button variant="outline-info" style={{marginRight: '10px'}}onClick = {()=>setShowAlertMsg(true)} className="pdf-button">

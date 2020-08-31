@@ -182,7 +182,7 @@ function App() {
     const newColumns = {
       ...data.columns,
       [oldColumnId]: {
-        ... data.columns[oldColumnId],
+        ...data.columns[oldColumnId],
         taskIds: oldColumnNewTaskIds
       },
       [newColumnId]: {

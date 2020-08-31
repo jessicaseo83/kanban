@@ -6,6 +6,7 @@
 
 .column-header {
   background-color: #f7ccc8;
+  font-family: 'Balsamiq Sans', cursive;
 }
 
 .card-header .edit-delete-btn {
@@ -23,4 +24,15 @@
 .task-list {
   display: flex;
   flex-direction: column;
+}
+
+.column-edit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.column-edit-btn {
+  margin: 0.3em;
+  background-color: #448ff1;
+  border: #448ff1;
 }
