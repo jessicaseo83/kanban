@@ -18,7 +18,7 @@ export default function AddTask(props) {
   }
 
   return (
-    <Accordion>
+    <Accordion className="add-task-dropdown">
     <Card>
     <Accordion.Toggle className="add-task" as={Card.Header} eventKey="0"> <BsFillPlusCircleFill /> </Accordion.Toggle>
     <Accordion.Collapse eventKey="0" >
