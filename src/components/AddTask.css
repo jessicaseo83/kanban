@@ -1,3 +1,18 @@
 .add-task {
   background-color: #ebdcf5;
 }
+
+.add-task-form {
+  text-align: left;
+  margin: 0.5em;
+}
+
+.add-task-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  background-color: #448ff1;
+  border: #448ff1;
+}
