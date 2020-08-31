@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
@@ -16,6 +16,7 @@ export default function Column(props) {
   const [columnName, setColumnName] = useState(props.column.title);
   const [edit, setEdit] = useState(false);
   const [modalShow, setModalShow] = useState(false);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   const handleSubmit = () => {
     props.editColumnName(columnName);
@@ -27,8 +28,14 @@ export default function Column(props) {
     setEdit(false);
   }
   
+  useEffect(()=>{
+    window.addEventListener('resize', ()=>setWindowSize(window.innerWidth));
+    
+    }, []);
+    
+  let isDragDisabled = windowSize <= 620;
   return (
-    <Draggable draggableId={props.column.id} index={props.index}>
+    <Draggable draggableId={props.column.id} index={props.index} isDragDisabled={isDragDisabled}>
       {(provided) => (
         <Card {...provided.draggableProps} ref={provided.innerRef} className="columns" >
           
@@ -44,7 +51,7 @@ export default function Column(props) {
           {edit === false &&
             <>
              
-              <Card.Header {...provided.dragHandleProps} className="card-header">
+              <Card.Header {...provided.dragHandleProps} className="column-header">
                 <div className="edit-delete-btn">
                   <BsPencil onClick={()=>setEdit(true)}>Edit</BsPencil>
                   <BsFillTrashFill onClick={() => setModalShow(true)}/>
