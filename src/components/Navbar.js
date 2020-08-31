@@ -20,7 +20,7 @@ export default function Header(props) {
         format: [638, 902]
       });
       pdf.addImage(imgData, 'PNG', 0, 0);
-      pdf.save("mytasks.pdf");  
+      pdf.save("my-kanban.pdf");  
     })
   }
   const handleClearBoard = () => {
@@ -30,7 +30,7 @@ export default function Header(props) {
 
   return (
     <Navbar className="nav" fixed="top" >
-      <Nav onClick={()=>alert(`This project is a kanban created by Jess and Eileen as part of the Aug. 28 2020 Mintbean JavaScript Bootcamp Olympics hackathon sponsored by FeaturePeek.`)}>
+      <Nav onClick={()=>alert(`This project is a kanban created by Jess and Eileen as part of the Aug. 28-31 2020 Mintbean JavaScript Bootcamp Olympics hackathon sponsored by FeaturePeek.`)}>
         <Nav.Link><Navbar.Brand className="brand-logo">Good Old Kanban</Navbar.Brand></Nav.Link>
       </Nav>
       <AlertMsg show={showAlertMsg} onHide={()=>setShowAlertMsg(false)} deleteComp={handleClearBoard}/>
