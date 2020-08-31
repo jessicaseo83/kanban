@@ -16,6 +16,11 @@ export default function AddTask(props) {
     setTitle('');
     setDetail('');
   }
+  const cancelEvent = (event) => {
+    event.preventDefault();
+    setTitle('');
+    setDetail('');
+  }
 
   return (
     <Accordion>
@@ -34,6 +39,9 @@ export default function AddTask(props) {
         <div className="add-task-btn">
         <Accordion.Toggle className="add-task-confirm" eventKey="0" as={Button} size="sm" onClick={addEvent}>
           Add Task
+        </Accordion.Toggle>
+        <Accordion.Toggle className="add-task-confirm" eventKey="0" as={Button} size="sm" onClick={cancelEvent}>
+          Cancel
         </Accordion.Toggle>
         </div>
       </Form>
