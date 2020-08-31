@@ -17,3 +17,10 @@
   background-color: #448ff1;
   border: #448ff1;
 }
+
+.add-task-dropdown {
+  position: absolute;
+  width: 80%;
+  margin-left: 4px;
+  z-index: 3;
+}
