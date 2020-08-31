@@ -40,4 +40,9 @@ html {
     justify-content: center;
     /* flex-direction: column; */
   }
+
+
+  .pdf-button {
+    visibility: hidden;
+  }
 }
