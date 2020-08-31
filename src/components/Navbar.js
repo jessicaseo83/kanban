@@ -15,9 +15,9 @@ export default function Header(props) {
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF({
-        orientation: "landscape",
-        unit: "in",
-        format: [28.48, 20]
+        orientation: "portrait",
+        unit: "mm",
+        format: [638, 902]
       });
       pdf.addImage(imgData, 'PNG', 0, 0);
       pdf.save("mytasks.pdf");  
