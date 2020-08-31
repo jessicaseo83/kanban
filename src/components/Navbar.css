@@ -8,3 +8,8 @@
   font-family: 'Leckerli One', cursive;
   font-size: 28px;
 }
+@media only screen and (max-width: 550px) {
+  .reset-board-button {
+    display: none;
+  }
+}
