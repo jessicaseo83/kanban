@@ -223,8 +223,22 @@ function App() {
   function clearBoard() {
     setData({
       tasks: {},
-      columns: {},
-      columnOrder: []
+      columns: {'c1' : {
+        id: 'c1',
+        title: 'To do',
+        taskIds: [],
+      },
+      'c2' : {
+        id: 'c2',
+        title: 'In progress',
+        taskIds: [],
+      },
+      'c3' : {
+        id: 'c3',
+        title: 'Done',
+        taskIds: [],
+      }},
+      columnOrder: ['c1', 'c2', 'c3']
     })
   }
   
