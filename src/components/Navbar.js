@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import html2canvas from 'html2canvas';
@@ -21,15 +21,15 @@ export default function Header(props) {
       pdf.save("mytasks.pdf");  
     })
   }
-
-  const handleClear = () => {
-    props.clearBoard;
+  const handleClearBoard = () => {
+    props.clearBoard();
+    setShowAlertMsg(false);
   }
 
   return (
     <Navbar className="nav" fixed="top">
       <Navbar.Brand>Good Old Kanban</Navbar.Brand>
-      {showAlertMsg && <AlertMsg/>}
+      <AlertMsg show={showAlertMsg} onHide={()=>setShowAlertMsg(false)} deleteComp={handleClearBoard}/>
       <div>
         <Button variant="outline-info" onClick = {()=>setShowAlertMsg(true)} className="pdf-button">
           Clear Board
