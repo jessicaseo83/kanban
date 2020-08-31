@@ -8,6 +8,7 @@ export default function AlertMsg(props) {
       show={props.show}
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
+      onHide={props.onHide}
       centered
     >
       <Modal.Header closeButton>
@@ -21,7 +22,7 @@ export default function AlertMsg(props) {
         </p>
       </Modal.Body>
       <Modal.Footer>
-      <Button onClick={props.deleteComp}>Delete</Button>
+        <Button onClick={props.deleteComp}>Delete</Button>
         <Button onClick={props.onHide}>Cancel</Button>
       </Modal.Footer>
     </Modal>
