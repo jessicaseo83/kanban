@@ -21,6 +21,7 @@
 html {
   background-color: azure;
 }
+
 .column-list {
   display: flex;
   justify-content: center;
@@ -28,8 +29,6 @@ html {
 }
 
 @media only screen and (max-width: 960px) {
-
-
   .App {
     display: flex;
     justify-content: center;
@@ -40,7 +39,6 @@ html {
     justify-content: center;
     /* flex-direction: column; */
   }
-
 
   .pdf-button {
     visibility: hidden;

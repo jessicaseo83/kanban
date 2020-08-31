@@ -130,6 +130,8 @@ function App() {
 
   const newColumn = (title) => {
     const newId = (Math.random() * 9999).toString();
+    const headerColorArray = ['#ffbebc','#85e3ff','#8ffcc6','#a79aff','#ff9cee','#ffb5e8','#ffc9de','#bffcc6','#dbffd6','seafoam', 'robin egg', 'mint','lavender','manga','dusty peach', 'butter','baby blue'];
+    const randomColor = headerColorArray[Math.floor(Math.random() * headerColorArray.length)];
     const newData = {
       ...data,
       columns: {
@@ -138,6 +140,7 @@ function App() {
           id: newId,
           title: title,
           taskIds: [],
+          color: randomColor
         }
       },
       columnOrder: [...data.columnOrder, newId]
@@ -217,7 +220,6 @@ function App() {
       columns: newColumns,
       columnOrder: newColumnOrder
     })
-
   }
 
   function clearBoard() {
@@ -227,16 +229,19 @@ function App() {
         id: 'c1',
         title: 'To do',
         taskIds: [],
+        color: '#afcbff'
       },
       'c2' : {
         id: 'c2',
         title: 'In progress',
         taskIds: [],
+        color: '#f6a6ff'
       },
       'c3' : {
         id: 'c3',
         title: 'Done',
         taskIds: [],
+        color: '#ffffd1'
       }},
       columnOrder: ['c1', 'c2', 'c3']
     })

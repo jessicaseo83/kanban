@@ -14,16 +14,19 @@ const initialData = {
       id: 'c1',
       title: 'To do',
       taskIds: ['task-1', 'task-2', 'task-3'],
+      color: '#f6a6ff'
     },
     'c2' : {
       id: 'c2',
       title: 'In progress',
       taskIds: ['task-4'],
+      color: '#afcbff'
     },
     'c3' : {
       id: 'c3',
       title: 'Done',
       taskIds: ['task-5'],
+      color: '#ffffd1'
     }
   },
   columnOrder: ['c1', 'c2', 'c3']

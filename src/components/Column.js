@@ -34,9 +34,6 @@ export default function Column(props) {
     }, []);
     
   let isDragDisabled = windowSize <= 620;
-
-  const headerColorArray = ['#f6a6ff','#afcbff','#ffffd1','#ffbebc','#85e3ff','#8ffcc6','#a79aff','#ff9cee','#ffb5e8','#ffc9de','#bffcc6','#dbffd6','seafoam', 'robin egg', 'mint','lavender','manga','dusty peach', 'butter','baby blue'];
-
   return (
     <Draggable draggableId={props.column.id} index={props.index} isDragDisabled={isDragDisabled}>
       {(provided) => (
@@ -44,7 +41,7 @@ export default function Column(props) {
           
           {edit === true &&
             <>
-              <Card.Header {...provided.dragHandleProps} className='card-header' style={{backgroundColor: 'blue'}}>
+              <Card.Header {...provided.dragHandleProps} className='card-header'>
                 <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
               <div className="column-edit">
               <Button className="column-edit-btn" size="sm" onClick={handleSubmit}>Submit</Button>
@@ -55,8 +52,7 @@ export default function Column(props) {
           }
           {edit === false &&
             <>
-             
-              <Card.Header {...provided.dragHandleProps} className='column-header' style={{backgroundColor: headerColorArray[Math.floor(Math.random() * headerColorArray.length)]}}>
+              <Card.Header {...provided.dragHandleProps} className='column-header' style={{backgroundColor: props.column.color}}>
                 <div className='edit-delete-btn'>
                   <BsPencil onClick={()=>setEdit(true)}>Edit</BsPencil>
                   <BsFillTrashFill onClick={() => setModalShow(true)}/>
