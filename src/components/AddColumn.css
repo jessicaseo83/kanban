@@ -1,8 +1,22 @@
 .add-columns {
   margin: 2em;
-  
+}
+
+.add-column {
+  background-color: #f7ccc8;
+}
+
+.add-column-form {
+  text-align: left;
+  margin: 0.5em;
 }
 
 .add-column-btn {
-  background-color: #f7ccc8;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-column-confirm {
+  background-color: #448ff1;
+  border: #448ff1;
 }

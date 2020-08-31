@@ -17,16 +17,18 @@ export default function AddColumn(props) {
   return (
     <Accordion className="add-columns">
       <Card>
-      <Accordion.Toggle className="add-column-btn" as={Card.Header} eventKey="0"> <BsFillPlusCircleFill /> </Accordion.Toggle>
+      <Accordion.Toggle className="add-column" as={Card.Header} eventKey="0"> <BsFillPlusCircleFill /> </Accordion.Toggle>
       <Accordion.Collapse eventKey="0" >
-      <Form>
+      <Form className="add-column-form">
         <Form.Group controlId="column-title">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>New Column Name</Form.Label>
           <Form.Control value={title} onChange={e=>setTitle(e.target.value)}/>
         </Form.Group>
-        <Accordion.Toggle eventKey="0" as={Button} onClick={addEvent}>
-          Add a column
+        <div className="add-column-btn">
+        <Accordion.Toggle className="add-column-confirm" eventKey="0" as={Button} size="sm" onClick={addEvent}>
+          Add column
         </Accordion.Toggle>
+        </div>
        
       </Form>
       </Accordion.Collapse>
