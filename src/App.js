@@ -193,14 +193,16 @@ function App() {
     })
 
   }
+  
 
   return (
     <div className="App" id='pdf'>
+      
       <Header />
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="all-colums" direction="horizontal" type="column" className="column-container">
           {provided => (
-            <div style={{display: "flex", justifyContent: "center"}} 
+            <div className="column-list"
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
@@ -215,7 +217,9 @@ function App() {
           )}
         </Droppable>
       </DragDropContext>
+      
     </div>
+
   );
 }
 
