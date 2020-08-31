@@ -17,3 +17,12 @@
   background-color: #448ff1;
   border: #448ff1;
 }
+
+@media only screen and (min-width: 1120px) {
+  .add-task-dropdown {
+    position: absolute;
+    width: 80%;
+    margin-left: 1px;
+    z-index: 3;
+  }
+}
