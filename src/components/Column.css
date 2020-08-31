@@ -1,7 +1,8 @@
 .columns {
   display: flex;
-  margin: 2em;
-  width: 15rem;
+  margin: 0.5em;
+  width: 13rem;
+  padding-bottom: 3rem;
 }
 
 .column-header {
@@ -29,10 +30,23 @@
 .column-edit {
   display: flex;
   justify-content: flex-end;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .column-edit-btn {
   margin: 0.3em;
   background-color: #448ff1;
   border: #448ff1;
+}
+
+@media only screen and (min-width: 1360px) {
+  .columns {
+    margin: 2em;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .columns {
+    margin: 2em;
+  }
 }

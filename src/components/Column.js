@@ -11,7 +11,16 @@ import AlertMsg from './AlertMsg';
 import './Column.css'
 
 export default function Column(props) {
-  const tasks = props.tasks.map((task, index) => (<Task key={task.id} task={task} index={index} onColumnChange={(columnId)=>props.onColumnChange(props.column.id, columnId, task.id)} columnNamesInOrder={props.columnNamesInOrder} onDelete={() => props.deleteTask(task.id, props.column.id)}></Task>))
+  const tasks = props.tasks.map((task, index) => (
+    <Task
+      key={task.id}
+      task={task}
+      index={index}
+      onColumnChange={(columnId)=>props.onColumnChange(props.column.id, columnId, task.id)}
+      columnNamesInOrder={props.columnNamesInOrder}
+      onDelete={() => props.deleteTask(task.id, props.column.id)}
+    />
+  ))
   const propTasks = props.column.title;
   const [columnName, setColumnName] = useState(props.column.title);
   const [edit, setEdit] = useState(false);
@@ -30,8 +39,8 @@ export default function Column(props) {
   
   useEffect(()=>{
     window.addEventListener('resize', ()=>setWindowSize(window.innerWidth));
-    
-    }, []);
+    return () => window.removeEventListener('resize', ()=>setWindowSize(window.innerWidth));
+  }, []);
     
   let isDragDisabled = windowSize <= 620;
   return (
@@ -41,8 +50,8 @@ export default function Column(props) {
           
           {edit === true &&
             <>
-              <Card.Header {...provided.dragHandleProps} className='card-header'>
-                <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
+              <Card.Header {...provided.dragHandleProps} className='card-header' style={{backgroundColor: '#2554C7'}}>
+                <Form.Control className="column-edit" value={columnName} onChange={e=>setColumnName(e.target.value)}/>
               <div className="column-edit">
               <Button className="column-edit-btn" size="sm" onClick={handleSubmit}>Submit</Button>
               <Button className="column-edit-btn" size="sm" onClick={handleClose}>Close</Button>
@@ -67,19 +76,19 @@ export default function Column(props) {
             </>
           }
           <Card.Body className='card-body'>
-          <Droppable droppableId={props.column.id} type='task'>
-            {(provided) => (
-              <CardGroup 
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              className='task-list'
-              >
-                {tasks}
-                {provided.placeholder}
-              </CardGroup>
-            )}
-          </Droppable>
-          <AddTask columnId={props.column.id} onAdd={(title, detail) => props.newTask(props.column.id, title, detail)}/>
+            <Droppable droppableId={props.column.id} type='task' style={{height: '600px'}}>
+              {(provided) => (
+                <CardGroup 
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                className='task-list'
+                >
+                  {tasks}
+                  {provided.placeholder}
+                </CardGroup>
+              )}
+            </Droppable>
+            <AddTask columnId={props.column.id} onAdd={(title, detail) => props.newTask(props.column.id, title, detail)}/>
         </Card.Body>
       </Card>
       )}

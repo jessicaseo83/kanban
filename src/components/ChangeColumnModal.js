@@ -7,7 +7,7 @@ export default function ChangeColumnModal(props) {
   const [columnToChange, setColumnToChange] = useState(null);
 
   const menuChangeDropdown = props.columnNamesInOrder.map((columnObject)=>(
-      <option value={columnObject.columnId} key={`dropdown-${columnObject.columnName}`}>
+      <option value={columnObject.columnId} key={`dropdown-${columnObject.columnId}`}>
         {columnObject.columnName}
       </option> 
     )

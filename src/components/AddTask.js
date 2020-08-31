@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
@@ -9,6 +9,7 @@ import './AddTask.css'
 export default function AddTask(props) {
   const [title, setTitle] = useState('');
   const [detail, setDetail] = useState('');
+  const node = useRef();
 
   function addEvent(event) {
     event.preventDefault();
@@ -16,9 +17,25 @@ export default function AddTask(props) {
     setTitle('');
     setDetail('');
   }
+  const cancelEvent = (event) => {
+    event.preventDefault();
+    setTitle('');
+    setDetail('');
+  }
+
+  useEffect(()=>{
+    const handleClick = () => {
+      setTitle('');
+      setDetail('');
+    };
+    window.addEventListener('click', handleClick);
+    return()=>{
+      document.removeEventListener('click', handleClick);
+    }
+  },[])
 
   return (
-    <Accordion>
+    <Accordion className="add-task-dropdown" ref={node}>
     <Card>
     <Accordion.Toggle className="add-task" as={Card.Header} eventKey="0"> <BsFillPlusCircleFill /> </Accordion.Toggle>
     <Accordion.Collapse eventKey="0" >
@@ -34,6 +51,9 @@ export default function AddTask(props) {
         <div className="add-task-btn">
         <Accordion.Toggle className="add-task-confirm" eventKey="0" as={Button} size="sm" onClick={addEvent}>
           Add Task
+        </Accordion.Toggle>
+        <Accordion.Toggle className="add-task-confirm" eventKey="0" as={Button} size="sm" onClick={cancelEvent}>
+          Cancel
         </Accordion.Toggle>
         </div>
       </Form>
