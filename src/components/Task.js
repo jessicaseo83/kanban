@@ -21,7 +21,7 @@ export default function Task(props) {
             ref={provided.innerRef}
             className="task-card"
             >
-            <Accordion.Toggle as={Card.Header} eventKey="0">
+            <Accordion.Toggle as={Card.Header} eventKey="0" className="task-header">
               <div className="delete-task-btn"><BsFillTrashFill onClick={() => setModalShow(true)}/></div>
               <AlertMsg
                 show={modalShow}
