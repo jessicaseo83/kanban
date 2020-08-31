@@ -130,7 +130,7 @@ function App() {
 
   const newColumn = (title) => {
     const newId = (Math.random() * 9999).toString();
-    const headerColorArray = ['#ffbebc','#85e3ff','#8ffcc6','#a79aff','#ff9cee','#ffb5e8','#ffc9de','#bffcc6','#dbffd6','seafoam', 'robin egg', 'mint','lavender','manga','dusty peach', 'butter','baby blue'];
+    const headerColorArray = ['#ffbebc','#85e3ff','#8ffcc6','#a79aff','#ff9cee','#ffb5e8','#ffc9de','#bffcc6','#dbffd6','seafoam', 'mint','lavender','mango', 'butter','baby blue'];
     const randomColor = headerColorArray[Math.floor(Math.random() * headerColorArray.length)];
     const newData = {
       ...data,
@@ -235,7 +235,7 @@ function App() {
         id: 'c2',
         title: 'In progress',
         taskIds: [],
-        color: '#f6a6ff'
+        color: 'mint'
       },
       'c3' : {
         id: 'c3',

@@ -20,7 +20,7 @@ const initialData = {
       id: 'c2',
       title: 'In progress',
       taskIds: ['task-4'],
-      color: '#afcbff'
+      color: 'mint'
     },
     'c3' : {
       id: 'c3',
