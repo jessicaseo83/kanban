@@ -219,12 +219,20 @@ function App() {
     })
 
   }
+
+  function clearBoard() {
+    setData({
+      tasks: {},
+      columns: {},
+      columnOrder: []
+    })
+  }
   
 
   return (
     <div className="App" id='pdf'>
       
-      <Header />
+      <Header clearBoard={clearBoard}/>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="all-colums" direction="horizontal" type="column" className="column-container">
           {provided => (
