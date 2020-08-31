@@ -9,6 +9,7 @@ import './Navbar.css'
 export default function Header(props) {
   const [showAlertMsg, setShowAlertMsg] = useState(false);
   const savePdf = function() {
+    window.scrollTo(0, 0)
     html2canvas(document.querySelector('#pdf'))
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
