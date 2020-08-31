@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
@@ -22,17 +22,6 @@ export default function AddTask(props) {
     setTitle('');
     setDetail('');
   }
-
-  useEffect(()=>{
-    const handleClick = () => {
-      setTitle('');
-      setDetail('');
-    };
-    window.addEventListener('click', handleClick);
-    return()=>{
-      document.removeEventListener('click', handleClick);
-    }
-  },[])
 
   return (
     <Accordion className="add-task-dropdown" ref={node}>
