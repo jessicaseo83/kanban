@@ -4,3 +4,27 @@
   margin-top: 5em;
   background-color: azure;
 }
+
+html {
+  background-color: azure;
+}
+.column-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 960px) {
+
+
+  .App {
+    display: flex;
+    justify-content: center;
+  }
+
+  .column-list {
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+  }
+}
