@@ -58,10 +58,8 @@ export default function Task(props) {
               changeColumns={props.onColumnChange}
               columnNamesInOrder={props.columnNamesInOrder}
             />
-            <Accordion.Toggle as={Card.Header} eventKey="0">
-              <div className="delete-task-btn">
-                <BsFillTrashFill onClick={() => setModalShow(true)}/>
-              </div>
+            <Accordion.Toggle as={Card.Header} eventKey="0" className="task-header">
+              <div className="delete-task-btn"><BsFillTrashFill onClick={() => setModalShow(true)}/></div>
               <AlertMsg
                 show={modalShow}
                 onHide={() => setModalShow(false)}

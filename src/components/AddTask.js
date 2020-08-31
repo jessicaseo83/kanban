@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
-
+import './AddTask.css'
 
 export default function AddTask(props) {
   const [title, setTitle] = useState('');
@@ -18,9 +18,9 @@ export default function AddTask(props) {
   }
 
   return (
-    <Accordion defaultActiveKey="1">
+    <Accordion>
     <Card>
-    <Accordion.Toggle as={Card.Header} eventKey="0"> <BsFillPlusCircleFill /> </Accordion.Toggle>
+    <Accordion.Toggle className="add-task" as={Card.Header} eventKey="0"> <BsFillPlusCircleFill /> </Accordion.Toggle>
     <Accordion.Collapse eventKey="0" >
       <Form>
         <Form.Group controlId={`editTitleForColumn${props.columnId}`}>

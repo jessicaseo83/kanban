@@ -22,8 +22,8 @@ export default function Header() {
 
   return (
     <Navbar className="nav" fixed="top">
-      <Navbar.Brand>Kanban Board</Navbar.Brand>
-      <Button onClick = {savePdf}>
+      <Navbar.Brand>Good Old Kanban</Navbar.Brand>
+      <Button variant="outline-info" onClick = {savePdf}>
         Print PDF
       </Button>
     </Navbar>

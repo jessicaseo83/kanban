@@ -4,8 +4,8 @@
   width: 15rem;
 }
 
-.card-header {
-  background-color: #f5f598;
+.column-header {
+  background-color: #f7ccc8;
 }
 
 .card-header .edit-delete-btn {
