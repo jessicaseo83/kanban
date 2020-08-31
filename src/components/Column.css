@@ -30,6 +30,7 @@
 .column-edit {
   display: flex;
   justify-content: flex-end;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .column-edit-btn {

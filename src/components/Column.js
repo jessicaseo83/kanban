@@ -53,11 +53,11 @@ export default function Column(props) {
           
           {edit === true &&
             <>
-              <Card.Header {...provided.dragHandleProps} className='card-header' style={{backgroundColor: 'blue'}}>
-                <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
-              <div className='column-edit'>
-              <Button className='column-edit-btn' size='sm' onClick={handleSubmit}>Submit</Button>
-              <Button className='column-edit-btn' size='sm' onClick={handleClose}>Close</Button>
+              <Card.Header {...provided.dragHandleProps} className='card-header' style={{backgroundColor: '#2554C7'}}>
+                <Form.Control className="column-edit" value={columnName} onChange={e=>setColumnName(e.target.value)}/>
+              <div className="column-edit">
+              <Button className="column-edit-btn" size="sm" onClick={handleSubmit}>Submit</Button>
+              <Button className="column-edit-btn" size="sm" onClick={handleClose}>Close</Button>
               </div>
               </Card.Header>
             </>

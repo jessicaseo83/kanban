@@ -13,6 +13,10 @@ export default function AddColumn(props) {
     props.onAdd(title);
     setTitle('');
   }
+  const cancelEvent = (event) => {
+    event.preventDefault();
+    setTitle('');
+  }
 
   return (
     <Accordion className="add-columns">
@@ -27,6 +31,9 @@ export default function AddColumn(props) {
         <div className="add-column-btn">
         <Accordion.Toggle className="add-column-confirm" eventKey="0" as={Button} size="sm" onClick={addEvent}>
           Add column
+        </Accordion.Toggle>
+        <Accordion.Toggle className="add-column-confirm" eventKey="0" as={Button} size="sm" onClick={cancelEvent}>
+          Cancel
         </Accordion.Toggle>
         </div>
        
