@@ -44,8 +44,8 @@ export default function Column(props) {
               <Card.Header {...provided.dragHandleProps} className="card-header">
                 <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
               <div className="column-edit">
-              <Button className="colume-edit-btn" onClick={handleSubmit}>Submit</Button>
-              <Button className="colume-edit-btn" onClick={handleClose}>Close</Button>
+              <Button className="column-edit-btn" size="sm" onClick={handleSubmit}>Submit</Button>
+              <Button className="column-edit-btn" size="sm" onClick={handleClose}>Close</Button>
               </div>
               </Card.Header>
             </>

@@ -25,10 +25,13 @@
   flex-direction: column;
 }
 
-/* .column-edit {
-  margin: 0.5em;
-} */
+.column-edit {
+  display: flex;
+  justify-content: flex-end;
+}
 
-.colume-edit-btn {
-  margin: 0.5em;
+.column-edit-btn {
+  margin: 0.3em;
+  background-color: #448ff1;
+  border: #448ff1;
 }
