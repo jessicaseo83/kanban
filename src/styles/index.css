@@ -41,6 +41,6 @@ html {
   }
 
   .pdf-button {
-    visibility: hidden;
+    display: none;
   }
 }

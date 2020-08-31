@@ -31,11 +31,11 @@ export default function Header(props) {
       <Navbar.Brand className="brand-logo">Good Old Kanban</Navbar.Brand>
       <AlertMsg show={showAlertMsg} onHide={()=>setShowAlertMsg(false)} deleteComp={handleClearBoard}/>
       <div>
-        <Button variant="outline-info" onClick = {savePdf} className="pdf-button">
-          Save as PDF
-        </Button>
         <Button variant="outline-info" style={{marginRight: '10px'}}onClick = {()=>setShowAlertMsg(true)} className="reset-board-button">
           Reset Board
+        </Button>
+        <Button variant="outline-info" onClick = {savePdf} className="pdf-button">
+          Save as PDF
         </Button>
       </div>
     </Navbar>
