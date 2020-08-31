@@ -11,7 +11,6 @@
 .add-task-btn {
   display: flex;
   justify-content: flex-end;
- 
 }
 
 .add-task-confirm {
@@ -22,6 +21,6 @@
 .add-task-dropdown {
   position: absolute;
   width: 80%;
-  margin-left: 4px;
+  margin-left: 1px;
   z-index: 3;
 }

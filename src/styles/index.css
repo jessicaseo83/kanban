@@ -21,6 +21,7 @@
 html {
   background-color: azure;
 }
+
 .column-list {
   display: flex;
   justify-content: center;
@@ -44,5 +45,13 @@ html {
 
   .pdf-button {
     visibility: hidden;
+  }
+}
+
+@media only screen and (max-width: 1360px) {
+  .add-task-dropdown {
+    position: relative;
+    width: 100%;
+    margin: auto;
   }
 }
