@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Task from './Task'
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import AddTask from './AddTask';
-import { BsFillTrashFill, BsPencil } from "react-icons/bs";
+import { BsFillTrashFill, BsPencil } from 'react-icons/bs';
 import AlertMsg from './AlertMsg';
 import './Column.css'
 
@@ -34,14 +34,17 @@ export default function Column(props) {
     }, []);
     
   let isDragDisabled = windowSize <= 620;
+
+  const headerColorArray = ['#f6a6ff','#afcbff','#ffffd1','#ffbebc','#85e3ff','#8ffcc6','#a79aff','#ff9cee','#ffb5e8','#ffc9de','#bffcc6','#dbffd6','seafoam', 'robin egg', 'mint','lavender','manga','dusty peach', 'butter','baby blue'];
+
   return (
     <Draggable draggableId={props.column.id} index={props.index} isDragDisabled={isDragDisabled}>
       {(provided) => (
-        <Card {...provided.draggableProps} ref={provided.innerRef} className="columns" >
+        <Card {...provided.draggableProps} ref={provided.innerRef} className='columns' >
           
           {edit === true &&
             <>
-              <Card.Header {...provided.dragHandleProps} className="card-header">
+              <Card.Header {...provided.dragHandleProps} className='card-header' style={{backgroundColor: 'blue'}}>
                 <Form.Control value={columnName} onChange={e=>setColumnName(e.target.value)}/>
               </Card.Header>
               <Button onClick={handleSubmit}>Submit</Button>
@@ -51,8 +54,8 @@ export default function Column(props) {
           {edit === false &&
             <>
              
-              <Card.Header {...provided.dragHandleProps} className="column-header">
-                <div className="edit-delete-btn">
+              <Card.Header {...provided.dragHandleProps} className='column-header' style={{backgroundColor: headerColorArray[Math.floor(Math.random() * headerColorArray.length)]}}>
+                <div className='edit-delete-btn'>
                   <BsPencil onClick={()=>setEdit(true)}>Edit</BsPencil>
                   <BsFillTrashFill onClick={() => setModalShow(true)}/>
                   <AlertMsg
@@ -65,13 +68,13 @@ export default function Column(props) {
               </Card.Header>
             </>
           }
-          <Card.Body className="card-body">
-          <Droppable droppableId={props.column.id} type="task">
+          <Card.Body className='card-body'>
+          <Droppable droppableId={props.column.id} type='task'>
             {(provided) => (
               <CardGroup 
               ref={provided.innerRef}
               {...provided.droppableProps}
-              className="task-list"
+              className='task-list'
               >
                 {tasks}
                 {provided.placeholder}
