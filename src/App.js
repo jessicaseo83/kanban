@@ -167,6 +167,32 @@ function App() {
     }});
   }
   
+  const columnNamesInOrder = data.columnOrder.map((columnId)=> {
+    return {columnId, columnName: data.columns[columnId].title};
+  })
+
+  const changeTaskColumn = (oldColumnId, newColumnId, taskId) =>{
+    const oldColumnNewTaskIds = [...data.columns[oldColumnId].taskIds];
+    const index = oldColumnNewTaskIds.indexOf(taskId);
+    if (index > -1) {
+      oldColumnNewTaskIds.splice(index, 1);
+    }
+    const newColumnNewTaskIds = [...data.columns[newColumnId].taskIds]
+    newColumnNewTaskIds.push(taskId);
+    const newColumns = {
+      ...data.columns,
+      [oldColumnId]: {
+        ... data.columns[oldColumnId],
+        taskIds: oldColumnNewTaskIds
+      },
+      [newColumnId]: {
+        ...data.columns[newColumnId],
+        taskIds: newColumnNewTaskIds
+      }
+    }
+    setData({...data, columns: newColumns});
+  }
+
   const deleteColumn = (columnId) => {
     const newColumns = {
       ...data.columns,
@@ -209,7 +235,20 @@ function App() {
               {data.columnOrder.map((columnId, index) => {
                 const column = data.columns[columnId];
                 const tasks = column.taskIds.map(taskId => data.tasks[taskId])
-                return <Column key={column.id} column={column} tasks={tasks} index={index} newTask={newTask} deleteTask={deleteTask} editColumnName={(newName)=>editColumnName(column.id, newName)} deleteColumn={deleteColumn}/>
+                return (
+                  <Column
+                    key={column.id}
+                    column={column}
+                    tasks={tasks}
+                    index={index}
+                    newTask={newTask}
+                    deleteTask={deleteTask}
+                    editColumnName={(newName)=>editColumnName(column.id, newName)}
+                    deleteColumn={deleteColumn}
+                    columnNamesInOrder={columnNamesInOrder}
+                    onColumnChange={changeTaskColumn}
+                  />
+                )
               })}
               {provided.placeholder}
               {data.columnOrder.length < 5 && <AddColumn onAdd={newColumn}/>}

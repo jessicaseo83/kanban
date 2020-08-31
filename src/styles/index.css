@@ -5,6 +5,19 @@
   background-color: azure;
 }
 
+.custom-context{
+  border: solid 1px #ccc;
+  display: inline-block;
+  margin: 5px;
+  background: #FFF;
+  color: #000;
+  font-family: sans-serif;
+  cursor: pointer;
+  font-size: 12px;
+  z-index: 3;
+  padding: 5px 25px;
+}
+
 html {
   background-color: azure;
 }
@@ -26,5 +39,10 @@ html {
     display: flex;
     justify-content: center;
     /* flex-direction: column; */
+  }
+
+
+  .pdf-button {
+    visibility: hidden;
   }
 }
